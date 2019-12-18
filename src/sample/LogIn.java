@@ -6,12 +6,43 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 
 public class LogIn {
+
+    @FXML
+    private Label label;
+
+    @FXML
+    private Rectangle rectangleMovie1;
+    @FXML
+    private Rectangle rectangleMovie2;
+    @FXML
+    private Rectangle rectangleMovie3;
+    @FXML
+    private Rectangle rectangleMovie4;
+    @FXML
+    private Rectangle rectangleMovie5;
+    @FXML
+    private Rectangle rectangleMovie6;
+
+    @FXML
+    private ImageView imageMovie1;
+    @FXML
+    private ImageView imageMovie2;
+    @FXML
+    private ImageView imageMovie3;
+    @FXML
+    private ImageView imageMovie4;
+    @FXML
+    private ImageView imageMovie5;
+    @FXML
+    private ImageView imageMovie6;
 
     @FXML
     private TextField tfUsername;
@@ -52,6 +83,57 @@ public class LogIn {
             message = new Alert(Alert.AlertType.NONE, "Log in failed" , ButtonType.OK);
             message.showAndWait();
         }
+    }
+
+
+
+    @FXML
+    private void mouseEnterMovie1() {
+        rectangleMovie1.setStyle("-fx-fill: white;");
+    }
+    @FXML
+    private void mouseLeaveMovie1() {
+        rectangleMovie1.setStyle("-fx-fill:  #2a3457;");
+    }
+    @FXML
+    private void mouseEnterMovie2() {
+        rectangleMovie2.setStyle("-fx-fill: white;");
+    }
+    @FXML
+    private void mouseLeaveMovie2() {
+        rectangleMovie2.setStyle("-fx-fill:  #2a3457;");
+    }
+    @FXML
+    private void mouseEnterMovie3() {
+        rectangleMovie3.setStyle("-fx-fill: white;");
+    }
+    @FXML
+    private void mouseLeaveMovie3() {
+        rectangleMovie3.setStyle("-fx-fill:  #2a3457;");
+    }
+    @FXML
+    private void mouseEnterMovie4() {
+        rectangleMovie4.setStyle("-fx-fill: white;");
+    }
+    @FXML
+    private void mouseLeaveMovie4() {
+        rectangleMovie4.setStyle("-fx-fill:  #2a3457;");
+    }
+    @FXML
+    private void mouseEnterMovie5() {
+        rectangleMovie5.setStyle("-fx-fill: white;");
+    }
+    @FXML
+    private void mouseLeaveMovie5() {
+        rectangleMovie5.setStyle("-fx-fill:  #2a3457;");
+    }
+    @FXML
+    private void mouseEnterMovie6() {
+        rectangleMovie6.setStyle("-fx-fill: white;");
+    }
+    @FXML
+    private void mouseLeaveMovie6() {
+        rectangleMovie6.setStyle("-fx-fill:  #2a3457;");
     }
 
 }
