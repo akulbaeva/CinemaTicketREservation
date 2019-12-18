@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -90,5 +92,13 @@
                 <Insets left="75.0" top="15.0" />
             </GridPane.margin>
         </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+         <image>
+            <Image url="@../images/Popcorn.png" />
+         </image>
+         <GridPane.margin>
+            <Insets bottom="30.0" left="85.0" />
+         </GridPane.margin>
+      </ImageView>
     </children>
 </GridPane>

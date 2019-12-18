@@ -38,7 +38,7 @@ public class LogIn {
 
                 stage.setOpacity(0.0);
 
-                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("FXMLDocument.fxml")));
+                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("SelectMovie.fxml")));
                 stage.setScene(scene);;
                 stage.setMaximized(true);
                 stage.setResizable(true);
