@@ -378,7 +378,7 @@ public class SeatSelection implements Initializable {
     private Button btnPurchaseSeats;
 
     @FXML
-    private ComboBox<?> comboBoxSelectTime;
+    private ComboBox comboBoxSelectTime;
 
 
     @Override
@@ -503,12 +503,12 @@ public class SeatSelection implements Initializable {
 
         comboBoxSelectTime.getItems().clear();
 
-//        comboBoxSelectTime.getItems().addAll(
-//                "Select Time",
-//                "9:00 AM",
-//                "1:00 PM",
-//                "5:00 PM",
-//                "9:00 PM");
+        comboBoxSelectTime.getItems().addAll(
+                "Select Time",
+                "9:00 AM",
+                "10:00 AM",
+                "5:00 PM",
+                "9:00 PM");
 
         Label seatReference;
 
