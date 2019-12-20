@@ -18,11 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
@@ -72,6 +68,37 @@ public class LogIn implements Initializable {
     private TextField tfUsername;
     @FXML
     private PasswordField pfPassword;
+    @FXML
+    private Button btnLogIn;
+    @FXML
+    private Button btnSignUp;
+
+
+//    import javafx.fxml.FXML;
+//import javafx.scene.control.Button;
+//import javafx.scene.control.TextField;
+//
+//    public class PleaseProvideControllerClassName {
+//
+//        @FXML
+//        private TextField tfFirstName;
+//
+//        @FXML
+//        private TextField tfLastName;
+//
+//        @FXML
+//        private TextField tfUsername;
+//
+//        @FXML
+//        private Button btnSubmit;
+//
+//        @FXML
+//        void btnSubmitClick(ActionEvent event) {
+//
+//        }
+//
+//    }
+
 
     @FXML
     public void btnLogInClick(ActionEvent event) {
@@ -225,7 +252,19 @@ public class LogIn implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+    }
+
+    public void btnSignUpClick(ActionEvent actionEvent) {
 
     }
 
+//    @FXML
+//    void initialize(){
+//        btnSignUp.setOnAction(event -> {
+//            btnSignUp.getScene().getWindow().hide();
+//
+//            FXMLLoader loader = new FXMLLoader();
+//            loader.setLocation(getClass().getResource("SigUp.fxml"));
+//        });
+//    }
 }
