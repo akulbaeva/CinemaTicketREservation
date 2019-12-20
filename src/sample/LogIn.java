@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,7 +68,6 @@ public class LogIn implements Initializable {
     @FXML
     private ImageView imageMovie6;
 
-    // *START* | All the objects/methods below belong to the log in screen.
     @FXML
     private TextField tfUsername;
     @FXML
@@ -93,13 +93,11 @@ public class LogIn implements Initializable {
                 stage.show();
 
                 stage.setOpacity(1.0);
-            }
-            catch (IOException ex) {
+            } catch (IOException ex) {
                 System.out.println(ex.toString());
             }
 
-        }
-        else {
+        } else {
             message = new Alert(Alert.AlertType.NONE, "Log in failed", ButtonType.OK);
             message.showAndWait();
         }
@@ -115,46 +113,57 @@ public class LogIn implements Initializable {
     private void mouseEnterMovie1() {
         rectangleMovie1.setStyle("-fx-fill: white;");
     }
+
     @FXML
     private void mouseLeaveMovie1() {
         rectangleMovie1.setStyle("-fx-fill:  #2a3457;");
     }
+
     @FXML
     private void mouseEnterMovie2() {
         rectangleMovie2.setStyle("-fx-fill: white;");
     }
+
     @FXML
     private void mouseLeaveMovie2() {
         rectangleMovie2.setStyle("-fx-fill:  #2a3457;");
     }
+
     @FXML
     private void mouseEnterMovie3() {
         rectangleMovie3.setStyle("-fx-fill: white;");
     }
+
     @FXML
     private void mouseLeaveMovie3() {
         rectangleMovie3.setStyle("-fx-fill:  #2a3457;");
     }
+
     @FXML
     private void mouseEnterMovie4() {
         rectangleMovie4.setStyle("-fx-fill: white;");
     }
+
     @FXML
     private void mouseLeaveMovie4() {
         rectangleMovie4.setStyle("-fx-fill:  #2a3457;");
     }
+
     @FXML
     private void mouseEnterMovie5() {
         rectangleMovie5.setStyle("-fx-fill: white;");
     }
+
     @FXML
     private void mouseLeaveMovie5() {
         rectangleMovie5.setStyle("-fx-fill:  #2a3457;");
     }
+
     @FXML
     private void mouseEnterMovie6() {
         rectangleMovie6.setStyle("-fx-fill: white;");
     }
+
     @FXML
     private void mouseLeaveMovie6() {
         rectangleMovie6.setStyle("-fx-fill:  #2a3457;");
@@ -166,7 +175,7 @@ public class LogIn implements Initializable {
         try {
             ImageView moviePoster = (ImageView) event.getSource();
 
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();
             stage.setOpacity(0.0);
 
@@ -177,21 +186,16 @@ public class LogIn implements Initializable {
 
             if (moviePoster.getId().equals("imageMovie1")) {
                 controller.setMovieTitle("The Greatest Showman");
-            }
-            else if (moviePoster.getId().equals("imageMovie2")) {
+            } else if (moviePoster.getId().equals("imageMovie2")) {
                 controller.setMovieTitle("Indiana Jones - Raiders of The " +
                         " Lost Ark");
-            }
-            else if (moviePoster.getId().equals("imageMovie3")) {
+            } else if (moviePoster.getId().equals("imageMovie3")) {
                 controller.setMovieTitle("E.T. The Extra-Terrestrial");
-            }
-            else if (moviePoster.getId().equals("imageMovie4")) {
+            } else if (moviePoster.getId().equals("imageMovie4")) {
                 controller.setMovieTitle("Jurassic Park");
-            }
-            else if (moviePoster.getId().equals("imageMovie5")) {
+            } else if (moviePoster.getId().equals("imageMovie5")) {
                 controller.setMovieTitle("Predator");
-            }
-            else if (moviePoster.getId().equals("imageMovie6")) {
+            } else if (moviePoster.getId().equals("imageMovie6")) {
                 controller.setMovieTitle("Gemini");
             }
 
@@ -203,8 +207,7 @@ public class LogIn implements Initializable {
             stage.show();
             stage.setOpacity(1.0);
 
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             System.out.println(ex.toString());
         }
     }

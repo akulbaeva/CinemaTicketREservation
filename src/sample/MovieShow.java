@@ -3,6 +3,7 @@ package sample;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
 import javafx.scene.image.ImageView;
 
 public class MovieShow {
@@ -13,7 +14,7 @@ public class MovieShow {
     private String time;
     private String theaterRoom;
 
-    private String [] seats = new String [108];
+    private String[] seats = new String[108];
 
     public MovieShow() {
         id = "None";
@@ -30,14 +31,13 @@ public class MovieShow {
     public MovieShow(File fileToRead) {
         try {
             Scanner input = new Scanner(fileToRead);
-        }
-        catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             System.out.println(ex.toString());
         }
     }
 
     public MovieShow(String id, String title, String date, String time,
-                     String theaterRoom, String [] seats) {
+                     String theaterRoom, String[] seats) {
         this.id = id;
         this.title = title;
         this.date = date;
@@ -90,7 +90,7 @@ public class MovieShow {
         return theaterRoom;
     }
 
-    public String [] getSeating() {
+    public String[] getSeating() {
         return seats;
     }
 }

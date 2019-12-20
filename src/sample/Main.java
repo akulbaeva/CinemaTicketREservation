@@ -25,8 +25,7 @@ public class Main extends Application {
 
         try {
             stage.getIcons().add(new Image("Icon/icon.png"));
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println(ex.toString());
         }
     }
