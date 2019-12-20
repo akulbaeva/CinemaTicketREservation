@@ -3,11 +3,14 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,6 +19,10 @@ import java.util.ResourceBundle;
 public class SeatSelection implements Initializable {
 
     private ArrayList<Label> seatList = new ArrayList<Label>();
+    private String movieTitleString;
+    private MovieShow currentMovie = new MovieShow();
+    private Theater currentTheater = new Theater();
+
 
 
     @FXML
@@ -403,7 +410,30 @@ public class SeatSelection implements Initializable {
         seatList.add(seatI10); seatList.add(seatI11); seatList.add(seatI12);
 
 
+        comboBoxSelectTime.getItems().clear();
+
+        comboBoxSelectTime.getItems().addAll(
+                "Select Time",
+                "9:00 AM",
+                "1:00 PM",
+                "5:00 PM",
+                "9:00 PM"
+        );
+
         Label seatReference;
+
+        for (int i = 0; i < seatList.size(); i++) {
+            seatReference = seatList.get(i);
+            seatReference.setDisable(true);
+            seatReference.setStyle("-fx-border-radius: 5; -fx-background-color: white;");
+        }
+    }
+
+    @FXML
+    private void windowSetUp(ActionEvent event) {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        stage.setTitle("Moon Cinemas - Seat Reservation Selection");
     }
 
     @FXML
@@ -413,7 +443,22 @@ public class SeatSelection implements Initializable {
 
     @FXML
     void clickOpenSeat(MouseEvent event) {
+        Label seat = (Label) event.getSource();
+        Label seatRef = getClickedLabelID(seat.getId());
 
+        if (seat.getText().equals("Open")) {
+            seatRef.setText("Selected");
+            seatRef.setStyle("-fx-background-color: orange;");
+        }
+        else if (seat.getText().equals("Selected")) {
+            seatRef.setText("Open");
+            seatRef.setStyle("-fx-background-color: white;");
+            seatRef.getStylesheets().add("mycss.css");
+        }
+    }
+
+    private Label getClickedLabelID(String id) {
+        return null;
     }
 
     @FXML
@@ -423,17 +468,92 @@ public class SeatSelection implements Initializable {
 
     @FXML
     void comboBoxSelectionChanged(ActionEvent event) {
+        Label seatRef;
+        if (!comboBoxSelectTime.getValue().toString().equals("Select Time")) {
+            movieTitle.setText(movieTitleString + " (" +
+                    comboBoxSelectTime.getValue().toString() + ")");
+            loadSeats();
 
+            for (int i = 0; i < seatList.size(); i++) {
+                seatRef = seatList.get(i);
+                seatRef.setDisable(false);
+            }
+        }
+        else {
+            movieTitle.setText(movieTitleString);
+
+            for (int i = 0; i < seatList.size(); i++) {
+                seatRef = seatList.get(i);
+                seatRef.setDisable(true);
+            }
+        }
+
+        for (int i = 0; i < seatList.size(); i++) {
+            seatRef = seatList.get(i);
+
+            if (seatRef.getText().toString().equals("Open")) {
+                seatRef.setStyle("-fx-background-color: white;");
+            }
+            else if (seatRef.getText().toString().equals("Selected")) {
+                seatRef.setText("Open");
+                seatRef.setStyle("-fx-background-color: white;");
+            }
+        }
     }
+
+    private void loadSeats() {
+        if (comboBoxSelectTime.getValue().toString().equals("9:00 AM")) {
+            currentMovie = currentTheater.getFirstShow();
+        }
+        else if (comboBoxSelectTime.getValue().toString().equals("1:00 PM")) {
+            currentMovie = currentTheater.getSecondShow();
+        }
+        else if (comboBoxSelectTime.getValue().toString().equals("5:00 PM")) {
+            currentMovie = currentTheater.getThirdShow();
+        }
+        else if (comboBoxSelectTime.getValue().toString().equals("9:00 PM")) {
+            currentMovie = currentTheater.getFourthShow();
+        }
+        else
+            currentMovie = null;
+
+        Label seatReference = new Label();
+        String [] seatStats = currentMovie.getSeating();
+
+        for (int i = 0; i < 108; i++) {
+            seatReference = seatList.get(i);
+            seatReference.setText(seatStats[i]);
+
+            if (seatReference.getText().equals("Reserved"))
+                seatReference.setStyle("-fx-background-color: red;");
+            else if (seatReference.getText().toString().equals("Open"))
+                seatReference.setStyle("-fx-background: white;");
+            else if (seatReference.getText().toString().equals("Selected")) {
+                seatReference.setText("Open");
+                seatReference.setStyle("-fx-background-color: white;");
+            }
+            seatList.set(i, seatReference);
+        }
+
+        currentMovie.setTitle(movieTitleString);
+        System.out.println(movieTitleString);
+    }
+
 
     @FXML
     void mouseEnterOpenSeat(MouseEvent event) {
+        Label seatRef = (Label)event.getSource();
 
+        if (seatRef.getText().equals("Open"))
+            seatRef.setStyle("-fx-background-color: lightblue;");
     }
 
     @FXML
     void mouseExitOpenSeat(MouseEvent event) {
+        Label seatRef = (Label)event.getSource();
 
+        if(seatRef.getText().equals("Open"))
+            seatRef.setStyle("-fx-background-color: white;");
     }
 
 }
