@@ -61,8 +61,11 @@
                 </HBox>
             </children>
             <GridPane.margin>
-                <Insets right="85.0" top="23.0" />
+                <Insets right="130.0" top="23.0" />
             </GridPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
         </VBox>
         <VBox prefHeight="200.0" prefWidth="200.0" spacing="32.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <children>

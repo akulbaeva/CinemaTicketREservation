@@ -2,8 +2,11 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -12,6 +15,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -20,9 +25,23 @@ public class SeatSelection implements Initializable {
 
     private ArrayList<Label> seatList = new ArrayList<Label>();
     private String movieTitleString;
-    private MovieShow currentMovie = new MovieShow();
-    private Theater currentTheater = new Theater();
+    private String currentTheaterID;
 
+    private MovieShow movie1 = new MovieShow();
+    private MovieShow movie2 = new MovieShow();
+    private MovieShow movie3 = new MovieShow();
+    private MovieShow movie4 = new MovieShow();
+    private MovieShow movie5 = new MovieShow();
+    private MovieShow movie6 = new MovieShow();
+    private MovieShow currentMovie = new MovieShow();
+
+    private Theater theater1 = new Theater();
+    private Theater theater2 = new Theater();
+    private Theater theater3 = new Theater();
+    private Theater theater4 = new Theater();
+    private Theater theater5 = new Theater();
+    private Theater theater6 = new Theater();
+    private Theater currentTheater = new Theater();
 
 
     @FXML
@@ -364,61 +383,132 @@ public class SeatSelection implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        seatList.add(seatA1); seatList.add(seatA2); seatList.add(seatA3);
-        seatList.add(seatA4); seatList.add(seatA5); seatList.add(seatA6);
-        seatList.add(seatA7); seatList.add(seatA8); seatList.add(seatA9);
-        seatList.add(seatA10); seatList.add(seatA11); seatList.add(seatA12);
+        seatList.add(seatA1);
+        seatList.add(seatA2);
+        seatList.add(seatA3);
+        seatList.add(seatA4);
+        seatList.add(seatA5);
+        seatList.add(seatA6);
+        seatList.add(seatA7);
+        seatList.add(seatA8);
+        seatList.add(seatA9);
+        seatList.add(seatA10);
+        seatList.add(seatA11);
+        seatList.add(seatA12);
 
-        seatList.add(seatB1); seatList.add(seatB2); seatList.add(seatB3);
-        seatList.add(seatB4); seatList.add(seatB5); seatList.add(seatB6);
-        seatList.add(seatB7); seatList.add(seatB8); seatList.add(seatB9);
-        seatList.add(seatB10); seatList.add(seatB11); seatList.add(seatB12);
+        seatList.add(seatB1);
+        seatList.add(seatB2);
+        seatList.add(seatB3);
+        seatList.add(seatB4);
+        seatList.add(seatB5);
+        seatList.add(seatB6);
+        seatList.add(seatB7);
+        seatList.add(seatB8);
+        seatList.add(seatB9);
+        seatList.add(seatB10);
+        seatList.add(seatB11);
+        seatList.add(seatB12);
 
-        seatList.add(seatC1); seatList.add(seatC2); seatList.add(seatC3);
-        seatList.add(seatC4); seatList.add(seatC5); seatList.add(seatC6);
-        seatList.add(seatC7); seatList.add(seatC8); seatList.add(seatC9);
-        seatList.add(seatC10); seatList.add(seatC11); seatList.add(seatC12);
+        seatList.add(seatC1);
+        seatList.add(seatC2);
+        seatList.add(seatC3);
+        seatList.add(seatC4);
+        seatList.add(seatC5);
+        seatList.add(seatC6);
+        seatList.add(seatC7);
+        seatList.add(seatC8);
+        seatList.add(seatC9);
+        seatList.add(seatC10);
+        seatList.add(seatC11);
+        seatList.add(seatC12);
 
-        seatList.add(seatD1); seatList.add(seatD2); seatList.add(seatD3);
-        seatList.add(seatD4); seatList.add(seatD5); seatList.add(seatD6);
-        seatList.add(seatD7); seatList.add(seatD8); seatList.add(seatD9);
-        seatList.add(seatD10); seatList.add(seatD11); seatList.add(seatD12);
+        seatList.add(seatD1);
+        seatList.add(seatD2);
+        seatList.add(seatD3);
+        seatList.add(seatD4);
+        seatList.add(seatD5);
+        seatList.add(seatD6);
+        seatList.add(seatD7);
+        seatList.add(seatD8);
+        seatList.add(seatD9);
+        seatList.add(seatD10);
+        seatList.add(seatD11);
+        seatList.add(seatD12);
 
-        seatList.add(seatE1); seatList.add(seatE2); seatList.add(seatE3);
-        seatList.add(seatE4); seatList.add(seatE5); seatList.add(seatE6);
-        seatList.add(seatE7); seatList.add(seatE8); seatList.add(seatE9);
-        seatList.add(seatE10); seatList.add(seatE11); seatList.add(seatE12);
+        seatList.add(seatE1);
+        seatList.add(seatE2);
+        seatList.add(seatE3);
+        seatList.add(seatE4);
+        seatList.add(seatE5);
+        seatList.add(seatE6);
+        seatList.add(seatE7);
+        seatList.add(seatE8);
+        seatList.add(seatE9);
+        seatList.add(seatE10);
+        seatList.add(seatE11);
+        seatList.add(seatE12);
 
-        seatList.add(seatF1); seatList.add(seatF2); seatList.add(seatF3);
-        seatList.add(seatF4); seatList.add(seatF5); seatList.add(seatF6);
-        seatList.add(seatF7); seatList.add(seatF8); seatList.add(seatF9);
-        seatList.add(seatF10); seatList.add(seatF11); seatList.add(seatF12);
+        seatList.add(seatF1);
+        seatList.add(seatF2);
+        seatList.add(seatF3);
+        seatList.add(seatF4);
+        seatList.add(seatF5);
+        seatList.add(seatF6);
+        seatList.add(seatF7);
+        seatList.add(seatF8);
+        seatList.add(seatF9);
+        seatList.add(seatF10);
+        seatList.add(seatF11);
+        seatList.add(seatF12);
 
-        seatList.add(seatG1); seatList.add(seatG2); seatList.add(seatG3);
-        seatList.add(seatG4); seatList.add(seatG5); seatList.add(seatG6);
-        seatList.add(seatG7); seatList.add(seatG8); seatList.add(seatG9);
-        seatList.add(seatG10); seatList.add(seatG11); seatList.add(seatG12);
+        seatList.add(seatG1);
+        seatList.add(seatG2);
+        seatList.add(seatG3);
+        seatList.add(seatG4);
+        seatList.add(seatG5);
+        seatList.add(seatG6);
+        seatList.add(seatG7);
+        seatList.add(seatG8);
+        seatList.add(seatG9);
+        seatList.add(seatG10);
+        seatList.add(seatG11);
+        seatList.add(seatG12);
 
-        seatList.add(seatH1); seatList.add(seatH2); seatList.add(seatH3);
-        seatList.add(seatH4); seatList.add(seatH5); seatList.add(seatH6);
-        seatList.add(seatH7); seatList.add(seatH8); seatList.add(seatH9);
-        seatList.add(seatH10); seatList.add(seatH11); seatList.add(seatH12);
+        seatList.add(seatH1);
+        seatList.add(seatH2);
+        seatList.add(seatH3);
+        seatList.add(seatH4);
+        seatList.add(seatH5);
+        seatList.add(seatH6);
+        seatList.add(seatH7);
+        seatList.add(seatH8);
+        seatList.add(seatH9);
+        seatList.add(seatH10);
+        seatList.add(seatH11);
+        seatList.add(seatH12);
 
-        seatList.add(seatI1); seatList.add(seatI2); seatList.add(seatI3);
-        seatList.add(seatI4); seatList.add(seatI5); seatList.add(seatI6);
-        seatList.add(seatI7); seatList.add(seatI8); seatList.add(seatI9);
-        seatList.add(seatI10); seatList.add(seatI11); seatList.add(seatI12);
+        seatList.add(seatI1);
+        seatList.add(seatI2);
+        seatList.add(seatI3);
+        seatList.add(seatI4);
+        seatList.add(seatI5);
+        seatList.add(seatI6);
+        seatList.add(seatI7);
+        seatList.add(seatI8);
+        seatList.add(seatI9);
+        seatList.add(seatI10);
+        seatList.add(seatI11);
+        seatList.add(seatI12);
 
 
         comboBoxSelectTime.getItems().clear();
 
-        comboBoxSelectTime.getItems().addAll(
-                "Select Time",
-                "9:00 AM",
-                "1:00 PM",
-                "5:00 PM",
-                "9:00 PM"
-        );
+//        comboBoxSelectTime.getItems().addAll(
+//                "Select Time",
+//                "9:00 AM",
+//                "1:00 PM",
+//                "5:00 PM",
+//                "9:00 PM");
 
         Label seatReference;
 
@@ -431,7 +521,7 @@ public class SeatSelection implements Initializable {
 
     @FXML
     private void windowSetUp(ActionEvent event) {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setTitle("Moon Cinemas - Seat Reservation Selection");
     }
@@ -439,6 +529,38 @@ public class SeatSelection implements Initializable {
     @FXML
     void clickGoBackBtn(ActionEvent event) {
 
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            stage.close();
+            stage.setOpacity(0.0);
+
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SelectMovie.fxml"));
+
+            Parent root = (Parent) fxmlLoader.load();
+            LogIn controller = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.show();
+            stage.setOpacity(1.0);
+
+            controller.saveSeating(theater1, theater2, theater3, theater4,
+                    theater5, theater6);
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        } finally {
+
+            String[] seats = currentMovie.getSeating();
+
+            for (int i = 0; i < 108; i++) {
+                if (seats[i].equals("Selected"))
+                    seats[i] = "Open";
+            }
+        }
     }
 
     @FXML
@@ -449,8 +571,7 @@ public class SeatSelection implements Initializable {
         if (seat.getText().equals("Open")) {
             seatRef.setText("Selected");
             seatRef.setStyle("-fx-background-color: orange;");
-        }
-        else if (seat.getText().equals("Selected")) {
+        } else if (seat.getText().equals("Selected")) {
             seatRef.setText("Open");
             seatRef.setStyle("-fx-background-color: white;");
             seatRef.getStylesheets().add("mycss.css");
@@ -478,8 +599,7 @@ public class SeatSelection implements Initializable {
                 seatRef = seatList.get(i);
                 seatRef.setDisable(false);
             }
-        }
-        else {
+        } else {
             movieTitle.setText(movieTitleString);
 
             for (int i = 0; i < seatList.size(); i++) {
@@ -493,8 +613,7 @@ public class SeatSelection implements Initializable {
 
             if (seatRef.getText().toString().equals("Open")) {
                 seatRef.setStyle("-fx-background-color: white;");
-            }
-            else if (seatRef.getText().toString().equals("Selected")) {
+            } else if (seatRef.getText().toString().equals("Selected")) {
                 seatRef.setText("Open");
                 seatRef.setStyle("-fx-background-color: white;");
             }
@@ -504,21 +623,17 @@ public class SeatSelection implements Initializable {
     private void loadSeats() {
         if (comboBoxSelectTime.getValue().toString().equals("9:00 AM")) {
             currentMovie = currentTheater.getFirstShow();
-        }
-        else if (comboBoxSelectTime.getValue().toString().equals("1:00 PM")) {
+        } else if (comboBoxSelectTime.getValue().toString().equals("1:00 PM")) {
             currentMovie = currentTheater.getSecondShow();
-        }
-        else if (comboBoxSelectTime.getValue().toString().equals("5:00 PM")) {
+        } else if (comboBoxSelectTime.getValue().toString().equals("5:00 PM")) {
             currentMovie = currentTheater.getThirdShow();
-        }
-        else if (comboBoxSelectTime.getValue().toString().equals("9:00 PM")) {
+        } else if (comboBoxSelectTime.getValue().toString().equals("9:00 PM")) {
             currentMovie = currentTheater.getFourthShow();
-        }
-        else
+        } else
             currentMovie = null;
 
         Label seatReference = new Label();
-        String [] seatStats = currentMovie.getSeating();
+        String[] seatStats = currentMovie.getSeating();
 
         for (int i = 0; i < 108; i++) {
             seatReference = seatList.get(i);
@@ -542,7 +657,7 @@ public class SeatSelection implements Initializable {
 
     @FXML
     void mouseEnterOpenSeat(MouseEvent event) {
-        Label seatRef = (Label)event.getSource();
+        Label seatRef = (Label) event.getSource();
 
         if (seatRef.getText().equals("Open"))
             seatRef.setStyle("-fx-background-color: lightblue;");
@@ -550,10 +665,60 @@ public class SeatSelection implements Initializable {
 
     @FXML
     void mouseExitOpenSeat(MouseEvent event) {
-        Label seatRef = (Label)event.getSource();
+        Label seatRef = (Label) event.getSource();
 
-        if(seatRef.getText().equals("Open"))
+        if (seatRef.getText().equals("Open"))
             seatRef.setStyle("-fx-background-color: white;");
     }
 
+    public void setMovieTitle(String movieTitle) {
+        this.movieTitle.setText(movieTitle);
+        movieTitleString = movieTitle;
+    }
+
+    public void loadTheaters(String id, Theater theater1, Theater theater2, Theater theater3,
+                             Theater theater4, Theater theater5, Theater theater6) {
+        currentTheaterID = id;
+
+        if (id.equals("imageMovie1")) {
+            currentMovie.setID(id);
+            currentMovie.setTitle(movieTitleString);
+            currentTheater = theater1;
+        } else if (id.equals("imageMovie2")) {
+            currentMovie.setID(id);
+            currentMovie.setTitle(movieTitleString);
+            currentTheater = theater2;
+        } else if (id.equals("imageMovie3")) {
+            currentMovie.setID(id);
+            currentMovie.setTitle(movieTitleString);
+            currentTheater = theater3;
+        } else if (id.equals("imageMovie4")) {
+            currentMovie.setID(id);
+            currentMovie.setTitle(movieTitleString);
+            currentTheater = theater4;
+        } else if (id.equals("imageMovie5")) {
+            currentMovie.setID(id);
+            currentMovie.setTitle(movieTitleString);
+            currentTheater = theater5;
+        } else if (id.equals("imageMovie6")) {
+            currentMovie.setID(id);
+            currentMovie.setTitle(movieTitleString);
+            currentTheater = theater6;
+        }
+
+        this.theater1 = theater1;
+        this.theater2 = theater2;
+        this.theater3 = theater3;
+        this.theater4 = theater4;
+        this.theater5 = theater5;
+        this.theater6 = theater6;
+
+//        try {
+//
+//            loadTheatersFromFile();
+//        }
+//        catch (FileNotFoundException ex) {
+//            System.out.println(ex.toString());
+//        }
+    }
 }
