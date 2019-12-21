@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
@@ -73,61 +74,103 @@ public class LogIn implements Initializable {
     @FXML
     private Button btnSignUp;
 
+    @FXML
+    private TextField tfFirstName;
 
-//    import javafx.fxml.FXML;
-//import javafx.scene.control.Button;
-//import javafx.scene.control.TextField;
-//
-//    public class PleaseProvideControllerClassName {
-//
-//        @FXML
-//        private TextField tfFirstName;
-//
-//        @FXML
-//        private TextField tfLastName;
-//
-//        @FXML
-//        private TextField tfUsername;
-//
-//        @FXML
-//        private Button btnSubmit;
-//
-//        @FXML
-//        void btnSubmitClick(ActionEvent event) {
-//
-//        }
-//
-//    }
+    @FXML
+    private TextField tfLastName;
+
+    @FXML
+    private TextField tfUserName;
+
+    @FXML
+    private Button btnBack;
+
+    @FXML
+    private Button btnSubmit;
+
+    @FXML
+    void btnBackClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnSubmitClick(ActionEvent event) {
+
+    }
+
 
 
     @FXML
     public void btnLogInClick(ActionEvent event) {
-        Alert message = null;
+        final Alert[] message = {null};
 
-        if (tfUsername.getText().equals("com") && pfPassword.getText().equals("com")) {
-            try {
-                Node node = (Node) event.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
+        btnLogIn.setOnAction(event1 -> {
+            String loginText = tfUsername.getText().trim();
+            String loginPass = pfPassword.getText().trim();
 
-                stage.close();
-
-                stage.setOpacity(0.0);
-
-                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("SelectMovie.fxml")));
-                stage.setScene(scene);
-                stage.setMaximized(true);
-                stage.setResizable(true);
-                stage.show();
-
-                stage.setOpacity(1.0);
-            } catch (IOException ex) {
-                System.out.println(ex.toString());
+            if (!loginText.equals("") && !loginPass.equals("")) {
+                loginUser(loginText, loginPass);
+            } else {
+                message[0] = new Alert(Alert.AlertType.NONE, "Log in failed", ButtonType.OK);
+                message[0].showAndWait();
             }
 
-        } else {
-            message = new Alert(Alert.AlertType.NONE, "Log in failed", ButtonType.OK);
-            message.showAndWait();
-        }
+        });
+
+
+//        Alert message = null;
+//
+//        if (tfUsername.getText().equals("com") && pfPassword.getText().equals("com")) {
+//            try {
+//                Node node = (Node) event.getSource();
+//                Stage stage = (Stage) node.getScene().getWindow();
+//
+//                stage.close();
+//
+//                stage.setOpacity(0.0);
+//
+//                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("SelectMovie.fxml")));
+//                stage.setScene(scene);
+//                stage.setMaximized(true);
+//                stage.setResizable(true);
+//                stage.show();
+//
+//                stage.setOpacity(1.0);
+//            } catch (IOException ex) {
+//                System.out.println(ex.toString());
+//            }
+//
+//        } else {
+//            message = new Alert(Alert.AlertType.NONE, "Log in failed", ButtonType.OK);
+//            message.showAndWait();
+//        }
+    }
+
+    private void loginUser(String loginText, String loginPass) {
+
+    }
+
+    @FXML
+    void btnSignUpClick(ActionEvent actionEvent) {
+        btnSignUp.setOnAction(event -> {
+            btnSignUp.getScene().getWindow().hide();
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("SignUp.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+
+        });
+
     }
 
     @FXML
@@ -254,17 +297,4 @@ public class LogIn implements Initializable {
 
     }
 
-    public void btnSignUpClick(ActionEvent actionEvent) {
-
-    }
-
-//    @FXML
-//    void initialize(){
-//        btnSignUp.setOnAction(event -> {
-//            btnSignUp.getScene().getWindow().hide();
-//
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(getClass().getResource("SigUp.fxml"));
-//        });
-//    }
 }
