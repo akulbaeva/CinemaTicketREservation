@@ -11,150 +11,120 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0"
-          prefWidth="1080.0" style="-fx-background-color: #16235A;" xmlns="http://javafx.com/javafx/8.0.171"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LogIn">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1080.0" style="-fx-background-color: #16235A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LogIn">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints maxHeight="264.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
-        <RowConstraints maxHeight="470.0" minHeight="5.0" prefHeight="73.0" vgrow="SOMETIMES"/>
-        <RowConstraints maxHeight="619.0" minHeight="10.0" prefHeight="301.0" vgrow="SOMETIMES"/>
-        <RowConstraints maxHeight="619.0" minHeight="10.0" prefHeight="301.0" vgrow="SOMETIMES"/>
-        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="264.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="470.0" minHeight="5.0" prefHeight="73.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="619.0" minHeight="10.0" prefHeight="301.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="619.0" minHeight="10.0" prefHeight="301.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <TextFlow disable="true" nodeOrientation="LEFT_TO_RIGHT" opacity="0.0" GridPane.halignment="CENTER"
-                  GridPane.valignment="CENTER">
+        <TextFlow disable="true" nodeOrientation="LEFT_TO_RIGHT" opacity="0.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
             <children>
-                <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" text="RETRO ENTERTAINMENT CINEMAS"
-                       textAlignment="CENTER" textFill="#a4a4bf" underline="true">
+                <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" text="RETRO ENTERTAINMENT CINEMAS" textAlignment="CENTER" textFill="#a4a4bf" underline="true">
                     <font>
-                        <Font name="Berlin Sans FB" size="34.0"/>
+                        <Font name="Berlin Sans FB" size="34.0" />
                     </font>
                 </Label>
             </children>
             <GridPane.margin>
-                <Insets top="20.0"/>
+                <Insets top="20.0" />
             </GridPane.margin>
         </TextFlow>
-        <TextFlow textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                  GridPane.valignment="CENTER">
+        <TextFlow textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <GridPane.margin>
-                <Insets/>
+                <Insets />
             </GridPane.margin>
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" text="Select Movie" textAlignment="CENTER"
-                       textFill="#f2eaed">
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Select Movie" textAlignment="CENTER" textFill="#f2eaed">
                     <font>
-                        <Font name="Segoe UI Bold" size="52.0"/>
+                        <Font name="Segoe UI Bold" size="52.0" />
                     </font>
                 </Label>
             </children>
         </TextFlow>
-        <Rectangle fx:id="rectangleMovie1" arcHeight="5.0" arcWidth="5.0" fill="#2a3457" height="260.0" stroke="BLACK"
-                   strokeType="INSIDE" style="-fx-fill: #2a3457;" width="225.0" GridPane.halignment="RIGHT"
-                   GridPane.rowIndex="2">
+        <Rectangle fx:id="rectangleMovie1" arcHeight="5.0" arcWidth="5.0" fill="#2a3457" height="260.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #2a3457;" width="225.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
             <GridPane.margin>
-                <Insets top="15.0"/>
+                <Insets top="15.0" />
             </GridPane.margin>
         </Rectangle>
-        <Rectangle fx:id="rectangleMovie2" arcHeight="5.0" arcWidth="5.0" fill="#2a3457" height="268.0" stroke="BLACK"
-                   strokeType="INSIDE" style="-fx-fill: #2a3457;" width="225.0" GridPane.columnIndex="1"
-                   GridPane.halignment="CENTER" GridPane.rowIndex="2">
+        <Rectangle fx:id="rectangleMovie2" arcHeight="5.0" arcWidth="5.0" fill="#2a3457" height="268.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #2a3457;" width="225.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
             <GridPane.margin>
-                <Insets right="30.0" top="15.0"/>
+                <Insets right="30.0" top="15.0" />
             </GridPane.margin>
         </Rectangle>
-        <Rectangle fx:id="rectangleMovie3" arcHeight="5.0" arcWidth="5.0" fill="#2a3457" height="288.0" stroke="BLACK"
-                   strokeType="INSIDE" style="-fx-fill: #2a3457;" width="225.0" GridPane.columnIndex="2"
-                   GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+        <Rectangle fx:id="rectangleMovie3" arcHeight="5.0" arcWidth="5.0" fill="#2a3457" height="288.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #2a3457;" width="225.0" GridPane.columnIndex="2" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="2">
             <GridPane.margin>
-                <Insets bottom="1.0" right="50.0" top="15.0"/>
+                <Insets bottom="1.0" right="50.0" top="15.0" />
             </GridPane.margin>
         </Rectangle>
-        <Rectangle fx:id="rectangleMovie4" arcHeight="5.0" arcWidth="5.0" fill="#2a3457" height="300.0" stroke="BLACK"
-                   strokeType="INSIDE" style="-fx-fill: #2a3457;" width="225.0" GridPane.halignment="RIGHT"
-                   GridPane.rowIndex="3">
+        <Rectangle fx:id="rectangleMovie4" arcHeight="5.0" arcWidth="5.0" fill="#2a3457" height="300.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #2a3457;" width="225.0" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
             <GridPane.margin>
-                <Insets top="15.0"/>
+                <Insets top="15.0" />
             </GridPane.margin>
         </Rectangle>
-        <Rectangle fx:id="rectangleMovie5" arcHeight="5.0" arcWidth="5.0" fill="#2a3457" height="300.0" stroke="BLACK"
-                   strokeType="INSIDE" style="-fx-fill: #2a3457;" width="225.0" GridPane.columnIndex="1"
-                   GridPane.halignment="CENTER" GridPane.rowIndex="3">
+        <Rectangle fx:id="rectangleMovie5" arcHeight="5.0" arcWidth="5.0" fill="#2a3457" height="300.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #2a3457;" width="225.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
             <GridPane.margin>
-                <Insets right="30.0" top="15.0"/>
+                <Insets right="30.0" top="15.0" />
             </GridPane.margin>
         </Rectangle>
-        <Rectangle fx:id="rectangleMovie6" arcHeight="5.0" arcWidth="5.0" fill="#2a3457" height="298.0" stroke="BLACK"
-                   strokeType="INSIDE" style="-fx-fill: #2a3457;" width="225.0" GridPane.columnIndex="2"
-                   GridPane.rowIndex="3">
+        <Rectangle fx:id="rectangleMovie6" arcHeight="5.0" arcWidth="5.0" fill="#2a3457" height="298.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: #2a3457;" width="225.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
             <GridPane.margin>
-                <Insets top="15.0"/>
+                <Insets top="15.0" />
             </GridPane.margin>
         </Rectangle>
-        <ImageView fx:id="imageMovie1" fitHeight="500.0" fitWidth="200.0" onMouseClicked="#clickMovie"
-                   onMouseEntered="#mouseEnterMovie1" onMouseExited="#mouseLeaveMovie1" pickOnBounds="true"
-                   preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+        <ImageView fx:id="imageMovie1" fitHeight="500.0" fitWidth="200.0" onMouseClicked="#clickMovie" onMouseEntered="#mouseEnterMovie1" onMouseExited="#mouseLeaveMovie1" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
             <image>
-                <Image url="@../images/GreatesShowman.jpg"/>
+                <Image url="@../images/GreatesShowman.jpg" />
             </image>
             <GridPane.margin>
-                <Insets top="15.0"/>
+                <Insets top="15.0" />
             </GridPane.margin>
         </ImageView>
-        <ImageView fx:id="imageMovie2" fitHeight="500.0" fitWidth="200.0" onMouseClicked="#clickMovie"
-                   onMouseEntered="#mouseEnterMovie2" onMouseExited="#mouseLeaveMovie2" pickOnBounds="true"
-                   preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+        <ImageView fx:id="imageMovie2" fitHeight="500.0" fitWidth="200.0" onMouseClicked="#clickMovie" onMouseEntered="#mouseEnterMovie2" onMouseExited="#mouseLeaveMovie2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
             <image>
-                <Image url="@../images/indianajones%202.jpg"/>
+                <Image url="@../images/indianajones%202.jpg" />
             </image>
             <GridPane.margin>
-                <Insets top="15.0"/>
+                <Insets top="15.0" />
             </GridPane.margin>
         </ImageView>
-        <ImageView fx:id="imageMovie3" fitHeight="500.0" fitWidth="200.0" onMouseClicked="#clickMovie"
-                   onMouseEntered="#mouseEnterMovie3" onMouseExited="#mouseLeaveMovie3" pickOnBounds="true"
-                   preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+        <ImageView fx:id="imageMovie3" fitHeight="500.0" fitWidth="200.0" onMouseClicked="#clickMovie" onMouseEntered="#mouseEnterMovie3" onMouseExited="#mouseLeaveMovie3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
             <image>
-                <Image url="@../images/et%202.jpg"/>
+                <Image url="@../images/et%202.jpg" />
             </image>
             <GridPane.margin>
-                <Insets top="15.0"/>
+                <Insets top="15.0" />
             </GridPane.margin>
         </ImageView>
-        <ImageView fx:id="imageMovie4" fitHeight="500.0" fitWidth="200.0" onMouseClicked="#clickMovie"
-                   onMouseEntered="#mouseEnterMovie4" onMouseExited="#mouseLeaveMovie4" pickOnBounds="true"
-                   preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+        <ImageView fx:id="imageMovie4" fitHeight="500.0" fitWidth="200.0" onMouseClicked="#clickMovie" onMouseEntered="#mouseEnterMovie4" onMouseExited="#mouseLeaveMovie4" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
             <image>
-                <Image url="@../images/jurassicpark%202.jpg"/>
+                <Image url="@../images/jurassicpark%202.jpg" />
             </image>
             <GridPane.margin>
-                <Insets top="15.0"/>
+                <Insets top="15.0" />
             </GridPane.margin>
         </ImageView>
-        <ImageView fx:id="imageMovie5" fitHeight="500.0" fitWidth="200.0" onMouseClicked="#clickMovie"
-                   onMouseEntered="#mouseEnterMovie5" onMouseExited="#mouseLeaveMovie5" pickOnBounds="true"
-                   preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+        <ImageView fx:id="imageMovie5" fitHeight="500.0" fitWidth="200.0" onMouseClicked="#clickMovie" onMouseEntered="#mouseEnterMovie5" onMouseExited="#mouseLeaveMovie5" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
             <image>
-                <Image url="@../images/predator%202.jpg"/>
+                <Image url="@../images/predator%202.jpg" />
             </image>
             <GridPane.margin>
-                <Insets top="15.0"/>
+                <Insets top="15.0" />
             </GridPane.margin>
         </ImageView>
-        <ImageView fx:id="imageMovie6" fitHeight="500.0" fitWidth="200.0" onMouseClicked="#clickMovie"
-                   onMouseEntered="#mouseEnterMovie6" onMouseExited="#mouseLeaveMovie6" pickOnBounds="true"
-                   preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+        <ImageView fx:id="imageMovie6" fitHeight="500.0" fitWidth="200.0" onMouseClicked="#clickMovie" onMouseEntered="#mouseEnterMovie6" onMouseExited="#mouseLeaveMovie6" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
             <image>
-                <Image url="@../images/Gemini.jpg"/>
+                <Image url="@../images/Gemini.jpg" />
             </image>
             <GridPane.margin>
-                <Insets top="15.0"/>
+                <Insets top="15.0" />
             </GridPane.margin>
         </ImageView>
     </children>

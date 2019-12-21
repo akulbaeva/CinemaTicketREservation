@@ -74,32 +74,6 @@ public class LogIn implements Initializable {
     @FXML
     private Button btnSignUp;
 
-    @FXML
-    private TextField tfFirstName;
-
-    @FXML
-    private TextField tfLastName;
-
-    @FXML
-    private TextField tfUserName;
-
-    @FXML
-    private Button btnBack;
-
-    @FXML
-    private Button btnSubmit;
-
-    @FXML
-    void btnBackClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnSubmitClick(ActionEvent event) {
-
-    }
-
-
 
     @FXML
     public void btnLogInClick(ActionEvent event) {
