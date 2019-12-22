@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 public class DatabaseHandler extends Configs {
     Connection dbConnection;
@@ -25,7 +26,7 @@ public class DatabaseHandler extends Configs {
                 "VALUES (?,?,?,?)";
 
         try {
-            PreparedStatement prSt= getDbConnection().prepareStatement(insert);
+            PreparedStatement prSt = getDbConnection().prepareStatement(insert);
             prSt.setString(1, user.getFirstName());
             prSt.setString(2, user.getLastName());
             prSt.setString(3, user.getUserName());
@@ -36,5 +37,25 @@ public class DatabaseHandler extends Configs {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public ResultSet getUser(User user) {
+        ResultSet resSet = null;
+
+        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " +
+                Const.USER_USERNAME + "=? AND " + Const.USER_PASSWORD + "=?";
+
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            prSt.setString(1, user.getUserName());
+            prSt.setString(2, user.getPassword());
+
+            resSet = prSt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return resSet;
     }
 }

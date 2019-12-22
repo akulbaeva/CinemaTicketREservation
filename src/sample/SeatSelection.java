@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -22,27 +23,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class SeatSelection implements Initializable {
-
-    private ArrayList<Label> seatList = new ArrayList<Label>();
-    private String movieTitleString;
-    private String currentTheaterID;
-
-    private MovieShow movie1 = new MovieShow();
-    private MovieShow movie2 = new MovieShow();
-    private MovieShow movie3 = new MovieShow();
-    private MovieShow movie4 = new MovieShow();
-    private MovieShow movie5 = new MovieShow();
-    private MovieShow movie6 = new MovieShow();
-    private MovieShow currentMovie = new MovieShow();
-
-    private Theater theater1 = new Theater();
-    private Theater theater2 = new Theater();
-    private Theater theater3 = new Theater();
-    private Theater theater4 = new Theater();
-    private Theater theater5 = new Theater();
-    private Theater theater6 = new Theater();
-    private Theater currentTheater = new Theater();
-
 
     @FXML
     private GridPane seat13;
@@ -380,6 +360,26 @@ public class SeatSelection implements Initializable {
     @FXML
     private ComboBox comboBoxSelectTime;
 
+    private ArrayList<Label> seatList = new ArrayList<Label>();
+    private String movieTitleString;
+    private String currentTheaterID;
+
+    private MovieShow movie1 = new MovieShow();
+    private MovieShow movie2 = new MovieShow();
+    private MovieShow movie3 = new MovieShow();
+    private MovieShow movie4 = new MovieShow();
+    private MovieShow movie5 = new MovieShow();
+    private MovieShow movie6 = new MovieShow();
+    private MovieShow currentMovie = new MovieShow();
+
+    private Theater theater1 = new Theater();
+    private Theater theater2 = new Theater();
+    private Theater theater3 = new Theater();
+    private Theater theater4 = new Theater();
+    private Theater theater5 = new Theater();
+    private Theater theater6 = new Theater();
+    private Theater currentTheater = new Theater();
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -579,12 +579,77 @@ public class SeatSelection implements Initializable {
     }
 
     private Label getClickedLabelID(String id) {
+        Label tempLabel = new Label();
+
+        for (int i = 0; i < seatList.size(); i++) {
+            tempLabel = seatList.get(i);
+
+            if (tempLabel.getId().equals(id)) {
+                return seatList.get(i);
+            }
+        }
         return null;
     }
 
     @FXML
     void clickPurchaseSeatsBtn(ActionEvent event) {
+        Alert windowAlert = new Alert(Alert.AlertType.INFORMATION);
+        Label tempLabel = new Label();
 
+        ArrayList<String> purchasedSeats = new ArrayList<String>();
+
+        int seatCounter = 0;
+        try {
+            if (!comboBoxSelectTime.getValue().toString().equals("Select Time")) {
+
+                for (int i = 0; i < seatList.size(); i++) {
+                    tempLabel = seatList.get(i);
+
+                    if (tempLabel.getText().equals("Selected")) {
+                        seatCounter++;
+                        purchasedSeats.add(tempLabel.getId());
+                    }
+                }
+
+                if (purchasedSeats.size() > 0) {
+
+                    String seatsConfirmed = "";
+
+                    for (int i = 0; i < purchasedSeats.size(); i++) {
+                        seatsConfirmed += purchasedSeats.get(i);
+                        seatsConfirmed += "\n";
+                    }
+
+                    windowAlert.setContentText("You purchased:\n\n" + seatsConfirmed);
+                    windowAlert.setTitle("Reservation Confirmation");
+                    windowAlert.showAndWait();
+
+
+                    for (int i = 0; i < seatList.size(); i++) {
+                        tempLabel = seatList.get(i);
+
+                        if (tempLabel.getText().equals("Selected")) {
+                            tempLabel.setText("Reserved");
+                            tempLabel.setStyle("-fx-background-color: red;");
+                        }
+                    }
+                    saveSeatingMap();
+                } else {
+                    windowAlert.setContentText("No seats were selected.");
+                    windowAlert.setTitle("No selection.");
+                    windowAlert.showAndWait();
+                }
+            } else {
+                windowAlert.setContentText("You must select a time.");
+                windowAlert.setTitle("Time not selected.");
+                windowAlert.showAndWait();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.toString() + " was caught and handled.");
+            windowAlert.setContentText("Please make a selection.");
+            windowAlert.setTitle("No selection.");
+            windowAlert.showAndWait();
+        }
     }
 
     @FXML
@@ -623,7 +688,7 @@ public class SeatSelection implements Initializable {
     private void loadSeats() {
         if (comboBoxSelectTime.getValue().toString().equals("9:00 AM")) {
             currentMovie = currentTheater.getFirstShow();
-        } else if (comboBoxSelectTime.getValue().toString().equals("1:00 PM")) {
+        } else if (comboBoxSelectTime.getValue().toString().equals("10:00 AM")) {
             currentMovie = currentTheater.getSecondShow();
         } else if (comboBoxSelectTime.getValue().toString().equals("5:00 PM")) {
             currentMovie = currentTheater.getThirdShow();
@@ -712,13 +777,44 @@ public class SeatSelection implements Initializable {
         this.theater4 = theater4;
         this.theater5 = theater5;
         this.theater6 = theater6;
-
-//        try {
-//
-//            loadTheatersFromFile();
-//        }
-//        catch (FileNotFoundException ex) {
-//            System.out.println(ex.toString());
-//        }
     }
+
+
+    private void saveSeatingMap() {
+
+        Label tempLabel = new Label();
+
+        for (int i = 0; i < 108; i++) {
+            tempLabel = seatList.get(i);
+            currentMovie.setSeat(i, tempLabel.getText());
+        }
+
+        currentMovie.setTitle(movieTitleString);
+        currentMovie.setID(currentTheaterID);
+        System.out.println("SaveSeatingMap() - " + movieTitleString);
+
+        if (comboBoxSelectTime.getValue().toString().equals("9:00 AM")) {
+            currentTheater.setFirstShow(currentMovie);
+        } else if (comboBoxSelectTime.getValue().toString().equals("10:00 AM")) {
+            currentTheater.setSecondShow(currentMovie);
+        } else if (comboBoxSelectTime.getValue().toString().equals("5:00 PM")) {
+            currentTheater.setThirdShow(currentMovie);
+        } else if (comboBoxSelectTime.getValue().toString().equals("9:00 PM")) {
+            currentTheater.setFourthShow(currentMovie);
+        }
+
+        if (currentTheaterID.equals("imageMovie1"))
+            theater1 = currentTheater;
+        else if (currentTheaterID.equals("imageMovie2"))
+            theater2 = currentTheater;
+        else if (currentTheaterID.equals("imageMovie3"))
+            theater3 = currentTheater;
+        else if (currentTheaterID.equals("imageMovie4"))
+            theater4 = currentTheater;
+        else if (currentTheaterID.equals("imageMovie5"))
+            theater5 = currentTheater;
+        else if (currentTheaterID.equals("imageMovie6"))
+            theater6 = currentTheater;
+    }
+
 }

@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,16 +27,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import sample.Theater;
+import sample.animation.Shake;
 
 
 public class LogIn implements Initializable {
-
-    private Theater theater1 = new Theater();
-    private Theater theater2 = new Theater();
-    private Theater theater3 = new Theater();
-    private Theater theater4 = new Theater();
-    private Theater theater5 = new Theater();
-    private Theater theater6 = new Theater();
 
     @FXML
     private Label label;
@@ -74,84 +70,119 @@ public class LogIn implements Initializable {
     @FXML
     private Button btnSignUp;
 
+    private Theater theater1 = new Theater();
+    private Theater theater2 = new Theater();
+    private Theater theater3 = new Theater();
+    private Theater theater4 = new Theater();
+    private Theater theater5 = new Theater();
+    private Theater theater6 = new Theater();
+
 
     @FXML
     public void btnLogInClick(ActionEvent event) {
         final Alert[] message = {null};
 
         btnLogIn.setOnAction(event1 -> {
+
             String loginText = tfUsername.getText().trim();
             String loginPass = pfPassword.getText().trim();
 
             if (!loginText.equals("") && !loginPass.equals("")) {
                 loginUser(loginText, loginPass);
             } else {
-                message[0] = new Alert(Alert.AlertType.NONE, "Log in failed", ButtonType.OK);
+                Shake userLogInAnim = new Shake(tfUsername);
+                Shake userPassAnim = new Shake(pfPassword);
+
+                userLogInAnim.playAnimation();
+                userPassAnim.playAnimation();
+                message[0] = new Alert(Alert.AlertType.NONE, "Username or Password is empty", ButtonType.OK);
                 message[0].showAndWait();
             }
-
         });
-
-
-//        Alert message = null;
-//
-//        if (tfUsername.getText().equals("com") && pfPassword.getText().equals("com")) {
-//            try {
-//                Node node = (Node) event.getSource();
-//                Stage stage = (Stage) node.getScene().getWindow();
-//
-//                stage.close();
-//
-//                stage.setOpacity(0.0);
-//
-//                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("SelectMovie.fxml")));
-//                stage.setScene(scene);
-//                stage.setMaximized(true);
-//                stage.setResizable(true);
-//                stage.show();
-//
-//                stage.setOpacity(1.0);
-//            } catch (IOException ex) {
-//                System.out.println(ex.toString());
-//            }
-//
-//        } else {
-//            message = new Alert(Alert.AlertType.NONE, "Log in failed", ButtonType.OK);
-//            message.showAndWait();
-//        }
     }
 
     private void loginUser(String loginText, String loginPass) {
+        final Alert[] message = {null};
 
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        User user = new User();
+        user.setUserName(loginText);
+        user.setPassword(loginPass);
+        ResultSet result = dbHandler.getUser(user);
+
+        int counter = 0;
+
+        try {
+            while (result.next()) {
+                counter++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (counter >= 1) {
+//            System.out.println("success!");
+            btnLogIn.setOnAction(event1 -> {
+                btnLogIn.getScene().getWindow().hide();
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("SelectMovie.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
+
+            });
+        } else {
+            Shake userLogInAnim = new Shake(tfUsername);
+            Shake userPassAnim = new Shake(pfPassword);
+
+            userLogInAnim.playAnimation();
+            userPassAnim.playAnimation();
+            message[0] = new Alert(Alert.AlertType.NONE, "Log in failed", ButtonType.OK);
+            message[0].showAndWait();
+        }
     }
+
 
     @FXML
     void btnSignUpClick(ActionEvent actionEvent) {
-        btnSignUp.setOnAction(event -> {
-            btnSignUp.getScene().getWindow().hide();
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("SignUp.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            Node node = (Node) actionEvent.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
 
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
+            stage.close();
+            stage.setOpacity(0.0);
 
-        });
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
+
+            Parent root = (Parent) fxmlLoader.load();
+            SignUp controller = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.show();
+            stage.setOpacity(1.0);
+
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        }
 
     }
 
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+//    @FXML
+//    private void handleButtonAction(ActionEvent event) {
+//        System.out.println("You clicked me!");
+//        label.setText("Hello World!");
+//    }
 
     @FXML
     private void mouseEnterMovie1() {
