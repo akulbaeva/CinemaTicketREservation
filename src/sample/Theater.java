@@ -7,7 +7,7 @@ public class Theater {
     private MovieShow show3;
     private MovieShow show4;
 
-    public Theater() {
+    public Theater()  {
         show1 = new MovieShow();
         show2 = new MovieShow();
         show3 = new MovieShow();

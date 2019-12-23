@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import javafx.scene.image.ImageView;
 
-public class MovieShow {
+public class MovieShow  {
 
     private String id;
     private String title;

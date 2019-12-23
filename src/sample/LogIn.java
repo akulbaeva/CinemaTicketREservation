@@ -28,6 +28,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import sample.Theater;
 import sample.animation.Shake;
+import sun.rmi.runtime.Log;
 
 
 public class LogIn implements Initializable {
@@ -82,7 +83,6 @@ public class LogIn implements Initializable {
     public void btnLogInClick(ActionEvent event) {
         final Alert[] message = {null};
 
-        btnLogIn.setOnAction(event1 -> {
 
             String loginText = tfUsername.getText().trim();
             String loginPass = pfPassword.getText().trim();
@@ -98,7 +98,6 @@ public class LogIn implements Initializable {
                 message[0] = new Alert(Alert.AlertType.NONE, "Username or Password is empty", ButtonType.OK);
                 message[0].showAndWait();
             }
-        });
     }
 
     private void loginUser(String loginText, String loginPass) {
@@ -121,7 +120,7 @@ public class LogIn implements Initializable {
         }
         if (counter >= 1) {
 //            System.out.println("success!");
-            btnLogIn.setOnAction(event1 -> {
+
                 btnLogIn.getScene().getWindow().hide();
 
                 FXMLLoader loader = new FXMLLoader();
@@ -137,7 +136,6 @@ public class LogIn implements Initializable {
                 stage.setScene(new Scene(root));
                 stage.showAndWait();
 
-            });
         } else {
             Shake userLogInAnim = new Shake(tfUsername);
             Shake userPassAnim = new Shake(pfPassword);
@@ -148,7 +146,6 @@ public class LogIn implements Initializable {
             message[0].showAndWait();
         }
     }
-
 
     @FXML
     void btnSignUpClick(ActionEvent actionEvent) {
@@ -175,7 +172,6 @@ public class LogIn implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.toString());
         }
-
     }
 
 //    @FXML

@@ -65,6 +65,28 @@ public class SignUp {
     void btnSubmitClick(ActionEvent event) {
 //        btnSubmit.setOnAction(event1 -> {
         signUpNewUser();
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            stage.close();
+            stage.setOpacity(0.0);
+
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SelectMovie.fxml"));
+
+            Parent root = (Parent) fxmlLoader.load();
+            LogIn controller = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.show();
+            stage.setOpacity(1.0);
+
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        }
 //        });
     }
 

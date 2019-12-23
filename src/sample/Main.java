@@ -24,7 +24,7 @@ public class Main extends Application {
         stage.setTitle("Moon Entertainment Cinemas - Seat Reservation System");
 
         try {
-            stage.getIcons().add(new Image("Icon/icon.png"));
+            stage.getIcons().add(new Image("images/icon.png"));
         } catch (Exception ex) {
             System.out.println(ex.toString());
         }
