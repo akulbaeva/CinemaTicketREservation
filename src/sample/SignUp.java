@@ -48,7 +48,7 @@ public class SignUp {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
 
             Parent root = (Parent) fxmlLoader.load();
-            LogIn controller = fxmlLoader.getController();
+            Controller controller = fxmlLoader.getController();
 
             Scene scene = new Scene(root);
 
@@ -76,7 +76,7 @@ public class SignUp {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SelectMovie.fxml"));
 
             Parent root = (Parent) fxmlLoader.load();
-            LogIn controller = fxmlLoader.getController();
+            Controller controller = fxmlLoader.getController();
 
             Scene scene = new Scene(root);
 

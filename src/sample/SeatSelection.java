@@ -540,7 +540,7 @@ public class SeatSelection implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SelectMovie.fxml"));
 
             Parent root = (Parent) fxmlLoader.load();
-            LogIn controller = fxmlLoader.getController();
+            Controller controller = fxmlLoader.getController();
 
             Scene scene = new Scene(root);
 
@@ -781,7 +781,6 @@ public class SeatSelection implements Initializable {
 
 
     private void saveSeatingMap() {
-
         Label tempLabel = new Label();
 
         for (int i = 0; i < 108; i++) {
@@ -816,5 +815,4 @@ public class SeatSelection implements Initializable {
         else if (currentTheaterID.equals("imageMovie6"))
             theater6 = currentTheater;
     }
-
 }

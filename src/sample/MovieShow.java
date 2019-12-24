@@ -28,14 +28,6 @@ public class MovieShow  {
         }
     }
 
-    public MovieShow(File fileToRead) {
-        try {
-            Scanner input = new Scanner(fileToRead);
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.toString());
-        }
-    }
-
     public MovieShow(String id, String title, String date, String time,
                      String theaterRoom, String[] seats) {
         this.id = id;

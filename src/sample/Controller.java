@@ -31,7 +31,7 @@ import sample.animation.Shake;
 import sun.rmi.runtime.Log;
 
 
-public class LogIn implements Initializable {
+public class Controller implements Initializable {
 
     @FXML
     private Label label;
@@ -83,21 +83,20 @@ public class LogIn implements Initializable {
     public void btnLogInClick(ActionEvent event) {
         final Alert[] message = {null};
 
+        String loginText = tfUsername.getText().trim();
+        String loginPass = pfPassword.getText().trim();
 
-            String loginText = tfUsername.getText().trim();
-            String loginPass = pfPassword.getText().trim();
+        if (!loginText.equals("") && !loginPass.equals("")) {
+            loginUser(loginText, loginPass);
+        } else {
+            Shake userLogInAnim = new Shake(tfUsername);
+            Shake userPassAnim = new Shake(pfPassword);
 
-            if (!loginText.equals("") && !loginPass.equals("")) {
-                loginUser(loginText, loginPass);
-            } else {
-                Shake userLogInAnim = new Shake(tfUsername);
-                Shake userPassAnim = new Shake(pfPassword);
-
-                userLogInAnim.playAnimation();
-                userPassAnim.playAnimation();
-                message[0] = new Alert(Alert.AlertType.NONE, "Username or Password is empty", ButtonType.OK);
-                message[0].showAndWait();
-            }
+            userLogInAnim.playAnimation();
+            userPassAnim.playAnimation();
+            message[0] = new Alert(Alert.AlertType.NONE, "Username or Password is empty", ButtonType.OK);
+            message[0].showAndWait();
+        }
     }
 
     private void loginUser(String loginText, String loginPass) {
@@ -121,20 +120,20 @@ public class LogIn implements Initializable {
         if (counter >= 1) {
 //            System.out.println("success!");
 
-                btnLogIn.getScene().getWindow().hide();
+            btnLogIn.getScene().getWindow().hide();
 
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("SelectMovie.fxml"));
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("SelectMovie.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-                Parent root = loader.getRoot();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.showAndWait();
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
 
         } else {
             Shake userLogInAnim = new Shake(tfUsername);
@@ -173,12 +172,6 @@ public class LogIn implements Initializable {
             System.out.println(ex.toString());
         }
     }
-
-//    @FXML
-//    private void handleButtonAction(ActionEvent event) {
-//        System.out.println("You clicked me!");
-//        label.setText("Hello World!");
-//    }
 
     @FXML
     private void mouseEnterMovie1() {
